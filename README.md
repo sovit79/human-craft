@@ -6,6 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Built%20for-Claude%20Code-7C5CFF.svg)](https://claude.com/claude-code)
+[![Multi-AI](https://img.shields.io/badge/Also%20works%20in-Codex%20%7C%20Gemini%20%7C%20Copilot%20%7C%20Cursor-4A90D9.svg)](#ai-platform-support)
 
 English · [한국어](#한국어)
 
@@ -36,11 +37,11 @@ If a context requires you to disclose AI assistance, **disclose it.** See [`docs
 
 ## Three skills
 
-| Skill | What it cleans | Reference taxonomy |
-|---|---|---|
-| `humanize-writing` | Prose, posts, docs, emails — English-first, language-agnostic engine | [taxonomy](.claude/skills/humanize-writing/references/ai-tell-taxonomy.md) |
-| `humanize-design` | Web/UI, landing pages, slide decks, HTML/CSS/React | [taxonomy](.claude/skills/humanize-design/references/design-slop-taxonomy.md) |
-| `humanize-image` | Generated illustrations & photos — audit + fix brief | [taxonomy](.claude/skills/humanize-image/references/image-tell-taxonomy.md) |
+| Skill | What it cleans | Languages | Reference taxonomy |
+|---|---|---|---|
+| `humanize-writing` | Prose, posts, docs, emails | EN · 中文 · ES · AR · PT · 한국어 · any (universal tells) | [taxonomy](.claude/skills/humanize-writing/references/ai-tell-taxonomy.md) |
+| `humanize-design` | Web/UI, landing pages, slide decks, HTML/CSS/React | Language-agnostic | [taxonomy](.claude/skills/humanize-design/references/design-slop-taxonomy.md) |
+| `humanize-image` | Generated illustrations & photos — audit + fix brief | Language-agnostic | [taxonomy](.claude/skills/humanize-image/references/image-tell-taxonomy.md) |
 
 Each skill follows the same loop: **detect → repair → verify (fidelity + naturalness) → grade.**
 
@@ -80,15 +81,45 @@ Tells are scored so the skill knows what to remove and what to leave.
 
 ---
 
+## AI platform support
+
+Human Craft works in Claude Code (native), and in any AI platform that reads the repo's entry file
+before answering. The skill content lives in `.claude/skills/` — all platforms read from there.
+
+| Platform | Entry file | Launch |
+|---|---|---|
+| [Claude Code](https://claude.com/claude-code) | `CLAUDE.md` + `.claude/skills/` | `claude` inside this folder |
+| OpenAI Codex | `AGENTS.md` | `codex` inside this folder |
+| Gemini CLI | `GEMINI.md` | `gemini` inside this folder |
+| GitHub Copilot | `.github/copilot-instructions.md` | open in VS Code with Copilot enabled |
+| Cursor / Windsurf | `.cursorrules` | open this folder in Cursor |
+
+All platforms use the same trigger phrases — one natural sentence is enough regardless of which AI you're using.
+
+---
+
 ## Quickstart (≈5 minutes)
 
 ### 0. Prerequisite
 
-You need [Claude Code](https://claude.com/claude-code) installed (Mac / Windows / Linux).
+Choose your AI platform. Claude Code is the reference implementation; all others work too.
 
+**Claude Code** (reference — Mac / Windows / Linux)
 ```bash
 claude --version
 ```
+
+**OpenAI Codex**
+```bash
+codex --version
+```
+
+**Gemini CLI**
+```bash
+gemini --version
+```
+
+**Cursor / Windsurf / GitHub Copilot:** open this folder in your IDE — no CLI needed.
 
 ### 1. Get the repo
 
