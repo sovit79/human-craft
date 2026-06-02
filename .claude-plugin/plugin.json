@@ -1,0 +1,8 @@
+{
+  "name": "human-craft",
+  "description": "Remove AI tells from writing, UI design, and images. Three skills: humanize-writing, humanize-design, humanize-image. Supports EN, 中文, Español, العربية, Português, 한국어.",
+  "author": {
+    "name": "sovit79",
+    "url": "https://github.com/sovit79/human-craft"
+  }
+}

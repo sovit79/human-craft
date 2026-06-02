@@ -1,0 +1,25 @@
+{
+  "name": "human-craft",
+  "version": "0.1.0",
+  "description": "Remove AI tells from writing, UI design, and images. Claude Code plugin.",
+  "license": "MIT",
+  "author": "sovit79",
+  "homepage": "https://github.com/sovit79/human-craft",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sovit79/human-craft.git"
+  },
+  "files": [
+    "skills/",
+    ".claude-plugin/",
+    "CLAUDE.md",
+    "AGENTS.md",
+    "GEMINI.md",
+    ".cursorrules",
+    ".github/copilot-instructions.md",
+    "docs/ethics.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": ["claude-code", "ai-tells", "de-slop", "humanize", "writing", "design"]
+}

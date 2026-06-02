@@ -1,0 +1,9 @@
+{
+  "name": "human-craft",
+  "displayName": "Human Craft",
+  "description": "Remove AI tells from writing, UI design, and images so the output reads as deliberate human craft. Three skills (humanize-writing, humanize-design, humanize-image), one loop: detect → repair → verify → grade. Multilingual writing support: EN, 中文, Español, العربية, Português, 한국어.",
+  "category": "writing",
+  "tags": ["writing", "design", "ai-tells", "de-slop", "humanize", "multilingual"],
+  "repository": "https://github.com/sovit79/human-craft",
+  "license": "MIT"
+}
