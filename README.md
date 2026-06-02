@@ -152,30 +152,23 @@ Then add the trigger routing to your global `~/.claude/CLAUDE.md`:
 
 ## Usage (≈30 seconds after install)
 
-### Paste and ask in plain language
+### One word is enough
 
-**Writing** — paste your AI draft and say:
-```
-de-slop this so it reads like a human wrote it:
+Paste or attach your content and just say **`humanize`** — the skill auto-detects what you gave it:
 
-[paste your AI draft]
-```
+| What you paste / attach | Skill that runs |
+|---|---|
+| Text / prose / email / doc | `humanize-writing` |
+| HTML / CSS / React / JSX code | `humanize-design` |
+| Image (attach file) | `humanize-image` |
 
-**Design** — paste code, a URL, or describe it:
 ```
-this landing page looks AI-generated — kill the slop but keep the layout working:
+humanize
 
-[paste your HTML/CSS/React, or a screenshot/URL]
-```
-
-**Image** — attach the image and say:
-```
-audit this generated image for AI tells and give me a fix brief
+[paste your AI draft, code, or attach image]
 ```
 
-Any of these trigger phrases work: *"remove the AI tells," "de-slop this," "make it look
-human-made," "kill the AI look," "humanize this draft / this UI," "AI 티 없애줘," "슬롭 제거해줘."*
-No slash commands needed — one natural sentence is enough.
+That's it. Other phrases that work: *"de-slop this," "remove the AI tells," "kill the AI look," "AI 티 없애줘," "슬롭 제거해줘."* All route the same way.
 
 ### What you get back
 
@@ -308,14 +301,21 @@ claude   # 또는 codex / gemini / Cursor로 열기
 
 ### 사용법
 
-글/코드/이미지를 붙여넣고 **한 문장**으로:
+글/코드/이미지를 붙여넣고 **`humanize`** 한 단어면 됩니다. 타입 자동 감지:
+
+| 붙여넣은 것 | 실행되는 스킬 |
+|---|---|
+| 글 / 이메일 / 문서 | `humanize-writing` |
+| HTML / CSS / React 코드 | `humanize-design` |
+| 이미지 첨부 | `humanize-image` |
 
 ```
-AI 티 없애줘      →  humanize-writing 스킬 작동
-슬롭 제거해줘     →  humanize-writing 스킬 작동
-이 UI AI 느낌 나  →  humanize-design 스킬 작동
-이 이미지 AI 티 점검해줘  →  humanize-image 스킬 작동
+humanize
+
+[글, 코드, 또는 이미지 첨부]
 ```
+
+다른 표현도 작동: *"AI 티 없애줘", "슬롭 제거해줘", "de-slop this"*
 
 결과: **탐지 리포트 → 수정본 → 검증(의미 보존 + 자연도) → 등급(A/B/C/D)**
 

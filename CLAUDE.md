@@ -3,6 +3,13 @@
 This repo is **Human Craft**, a kit of skills that remove "AI tells" from writing, UI design, and
 images so the output reads as deliberate human craft. When Claude Code runs inside this folder:
 
+## Universal trigger
+
+`humanize` alone (or "AI 티 없애줘" / "슬롭 제거" / "de-slop") → inspect what was attached or pasted:
+- **Image attached** → `humanize-image`
+- **HTML / CSS / React / JSX code pasted** → `humanize-design`
+- **Text / prose** → `humanize-writing`
+
 ## Load the right skill by intent
 - Text pasted + "de-slop / remove AI tells / humanize / kill the ChatGPT voice" → `humanize-writing`.
 - HTML/CSS/React, screenshot, or URL + "looks AI-generated / de-slop the UI / kill the AI look"

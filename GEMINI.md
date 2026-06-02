@@ -7,6 +7,13 @@ while eliminating the machine fingerprint. Three skills, one loop: detect → re
 > syntax for eager file embedding — this repo skips that and uses on-demand file reads instead,
 > so only the relevant skill loads per task. Use your file-read tool when routing below.
 
+## Universal trigger
+
+`humanize` alone (or "AI 티 없애줘" / "슬롭 제거" / "de-slop") → inspect what was attached or pasted and route automatically:
+- **Image attached** → read `.claude/skills/humanize-image/SKILL.md`
+- **HTML / CSS / React / JSX code pasted** → read `.claude/skills/humanize-design/SKILL.md`
+- **Text / prose** → read `.claude/skills/humanize-writing/SKILL.md`
+
 ## Intent routing
 
 Detect user intent and **read the relevant skill file before doing anything else** using your
