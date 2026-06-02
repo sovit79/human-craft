@@ -83,86 +83,101 @@ Tells are scored so the skill knows what to remove and what to leave.
 
 ## AI platform support
 
-Human Craft works in Claude Code (native), and in any AI platform that reads the repo's entry file
-before answering. The skill content lives in `.claude/skills/` — all platforms read from there.
+Human Craft works in Claude Code (native plugin or project mode), and in any AI platform that
+reads the repo's entry file automatically.
 
-| Platform | Entry file | Launch |
+| Platform | How it loads | Entry file |
 |---|---|---|
-| [Claude Code](https://claude.com/claude-code) | `CLAUDE.md` + `.claude/skills/` | `claude` inside this folder |
-| OpenAI Codex | `AGENTS.md` | `codex` inside this folder |
-| Gemini CLI | `GEMINI.md` | `gemini` inside this folder |
-| GitHub Copilot | `.github/copilot-instructions.md` | open in VS Code with Copilot enabled |
-| Cursor / Windsurf | `.cursorrules` | open this folder in Cursor |
+| [Claude Code](https://claude.com/claude-code) | Plugin install **or** run from folder | `CLAUDE.md` + `skills/` |
+| OpenAI Codex | Run from folder | `AGENTS.md` |
+| Gemini CLI | Run from folder | `GEMINI.md` |
+| GitHub Copilot | Open folder in VS Code | `.github/copilot-instructions.md` |
+| Cursor / Windsurf | Open folder in IDE | `.cursorrules` |
 
-All platforms use the same trigger phrases — one natural sentence is enough regardless of which AI you're using.
+All platforms use the same trigger phrases — one natural sentence is enough.
 
 ---
 
-## Quickstart (≈5 minutes)
+## Installation
 
-### 0. Prerequisite
+### Option 1 — Claude Code plugin (recommended, global)
 
-Choose your AI platform. Claude Code is the reference implementation; all others work too.
+Install once, use from any project:
 
-**Claude Code** (reference — Mac / Windows / Linux)
 ```bash
-claude --version
+claude plugin install https://github.com/sovit79/human-craft
 ```
 
-**OpenAI Codex**
-```bash
-codex --version
-```
+Done. Open any project in Claude Code and the skills are available immediately.
 
-**Gemini CLI**
-```bash
-gemini --version
-```
+### Option 2 — Clone and run from folder
 
-**Cursor / Windsurf / GitHub Copilot:** open this folder in your IDE — no CLI needed.
-
-### 1. Get the repo
+Works with Claude Code, Codex, Gemini CLI, Cursor, Copilot:
 
 ```bash
-git clone https://github.com/YOUR_NAME/human-craft.git
+git clone https://github.com/sovit79/human-craft.git
 cd human-craft
 ```
 
-### 2. Start Claude Code *inside this folder*
+Then launch your AI **inside this folder**:
+
+| Platform | Command |
+|---|---|
+| Claude Code | `claude` |
+| OpenAI Codex | `codex` |
+| Gemini CLI | `gemini` |
+| Cursor / Windsurf | Open folder in IDE |
+| GitHub Copilot | Open folder in VS Code with Copilot enabled |
+
+> Skills load automatically from the folder — no configuration needed.
+
+### Option 3 — Copy to global Claude Code skills (manual)
 
 ```bash
-claude
+cp -r .claude/skills/humanize-writing ~/.claude/skills/
+cp -r .claude/skills/humanize-design ~/.claude/skills/
+cp -r .claude/skills/humanize-image ~/.claude/skills/
 ```
 
-> **Important:** launch it from inside `human-craft/`. Started elsewhere, the skills in this
-> repo won't load and you'll just get plain Claude Code.
+Then add the trigger routing to your global `~/.claude/CLAUDE.md`:
 
-### 3. Paste your content and ask in plain language
+```markdown
+## Human Craft skills
+- Text + "de-slop / AI 티 제거 / humanize" → humanize-writing skill
+- UI/HTML/CSS + "AI 느낌 / de-slop" → humanize-design skill
+- Image + "AI 티 / audit" → humanize-image skill
+```
 
-**Writing**
+---
+
+## Usage (≈30 seconds after install)
+
+### Paste and ask in plain language
+
+**Writing** — paste your AI draft and say:
 ```
 de-slop this so it reads like a human wrote it:
 
 [paste your AI draft]
 ```
 
-**Design** (paste code, a URL, or describe it)
+**Design** — paste code, a URL, or describe it:
 ```
 this landing page looks AI-generated — kill the slop but keep the layout working:
 
 [paste your HTML/CSS/React, or a screenshot/URL]
 ```
 
-**Image** (attach the image)
+**Image** — attach the image and say:
 ```
 audit this generated image for AI tells and give me a fix brief
 ```
 
 Any of these trigger phrases work: *"remove the AI tells," "de-slop this," "make it look
-human-made," "kill the AI look," "humanize this draft / this UI."* No slash commands needed —
-one natural sentence is enough.
+human-made," "kill the AI look," "humanize this draft / this UI," "AI 티 없애줘," "슬롭 제거해줘."*
+No slash commands needed — one natural sentence is enough.
 
-### 4. What you get back
+### What you get back
 
 1. **Detection** — every tell, located, categorized, severity-tagged.
 2. **Repair** — meaning/behavior preserved, only the machine fingerprint removed.
@@ -173,7 +188,7 @@ one natural sentence is enough.
 
 Detailed artifacts are written to `_workspace/{run-date-N}/` so runs never mix.
 
-### 5. If you don't like it
+### If you don't like it
 
 Just say so, in plain words:
 
@@ -231,9 +246,9 @@ pattern. Human Craft generalizes the idea to **multiple languages and multiple m
 
 ## Roadmap
 
-- **v0 (this)** — three local Claude Code skills, English-first writing + web/UI design + image audit.
-- **v1** — per-language writing packs (한국어 / 日本語 / 中文 / Español …), pluggable into the same engine.
-- **v2** — a `brand-profile.yml` so teams pin their own fonts/colors/voice and the skill de-slops *toward the brand*, not toward generic.
+- **v0 (this)** — three skills (writing, design, image); multilingual writing (EN · 中文 · ES · AR · PT · 한국어); Claude Code plugin + Codex / Gemini / Copilot / Cursor support.
+- **v1** — additional language writing packs (日本語 / Français / Deutsch / …); Korean rewriting-playbook.
+- **v2** — `brand-profile.yml` so teams pin their own fonts/colors/voice and the skill de-slops *toward the brand*, not toward generic.
 - **v3** — optional web service (paste → highlighted tells → side-by-side diff → copy).
 - **v4** — VS Code / browser extension.
 
@@ -272,13 +287,37 @@ AI에게 글을 쓰게 하거나 화면을 디자인하게 하면, 결과물은 
 3. **장르·브랜드 유지** — 리포트를 에세이로, B2B 대시보드를 포스터로 바꾸지 않음.
 4. **과윤문 금지** — 변경률 초과 시 경고, 상한 초과 시 중단.
 
-### 5분 사용법
-1. [Claude Code](https://claude.com/claude-code) 설치 → `claude --version` 확인
-2. `git clone … && cd human-craft`
-3. **이 폴더 안에서** `claude` 실행
-4. 글/코드/이미지를 붙여넣고 한 문장으로 부탁: *"AI 티 없애줘", "슬롭 제거하고 레이아웃은 유지해줘",
-   "이 생성 이미지 AI 티 점검해줘"*
-5. 결과: 탐지 리포트 → 수정본 → 검증(의미 보존 + 자연도 재측정) → 등급(A/B/C/D)
+### 지원 언어 (글쓰기 스킬)
+
+영어(EN) · 중국어 간체(中文) · 스페인어(ES) · 아랍어(AR) · 포르투갈어/브라질(PT) · **한국어(KO)**
+
+### 설치 방법
+
+**방법 1 — Claude Code 플러그인 (권장, 글로벌)**
+```bash
+claude plugin install https://github.com/sovit79/human-craft
+```
+설치 후 어느 프로젝트에서든 바로 사용.
+
+**방법 2 — 클론 후 폴더 안에서 실행**
+```bash
+git clone https://github.com/sovit79/human-craft.git
+cd human-craft
+claude   # 또는 codex / gemini / Cursor로 열기
+```
+
+### 사용법
+
+글/코드/이미지를 붙여넣고 **한 문장**으로:
+
+```
+AI 티 없애줘      →  humanize-writing 스킬 작동
+슬롭 제거해줘     →  humanize-writing 스킬 작동
+이 UI AI 느낌 나  →  humanize-design 스킬 작동
+이 이미지 AI 티 점검해줘  →  humanize-image 스킬 작동
+```
+
+결과: **탐지 리포트 → 수정본 → 검증(의미 보존 + 자연도) → 등급(A/B/C/D)**
 
 이 레포는 [`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai)(한글 글 특화)와
 [revfactory/harness](https://github.com/revfactory/harness) 아키텍처에서 영감을 받아,
