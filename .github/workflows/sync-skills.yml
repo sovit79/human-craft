@@ -1,0 +1,33 @@
+name: Sync skills/ → .claude/skills/
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - 'skills/**'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync skills/ to .claude/skills/
+        run: |
+          rsync -av --delete skills/ .claude/skills/
+
+      - name: Commit if changed
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add .claude/skills/
+          if git diff --staged --quiet; then
+            echo "No changes to sync"
+          else
+            git commit -m "chore: sync .claude/skills/ from skills/ [skip ci]"
+            git push
+          fi

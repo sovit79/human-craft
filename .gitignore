@@ -1,3 +1,6 @@
+# Internal planning docs — not useful for external contributors
+docs/superpowers/
+
 # Skill run outputs — never commit
 _workspace/
 
