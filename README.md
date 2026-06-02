@@ -39,9 +39,9 @@ If a context requires you to disclose AI assistance, **disclose it.** See [`docs
 
 | Skill | What it cleans | Languages | Reference taxonomy |
 |---|---|---|---|
-| `humanize-writing` | Prose, posts, docs, emails | EN · 中文 · ES · AR · PT · 한국어 · any (universal tells) | [taxonomy](.claude/skills/humanize-writing/references/ai-tell-taxonomy.md) |
-| `humanize-design` | Web/UI, landing pages, slide decks, HTML/CSS/React | Language-agnostic | [taxonomy](.claude/skills/humanize-design/references/design-slop-taxonomy.md) |
-| `humanize-image` | Generated illustrations & photos — audit + fix brief | Language-agnostic | [taxonomy](.claude/skills/humanize-image/references/image-tell-taxonomy.md) |
+| `humanize-writing` | Prose, posts, docs, emails | EN · 中文 · ES · AR · PT · 한국어 · any (universal tells) | [taxonomy](skills/humanize-writing/references/ai-tell-taxonomy.md) |
+| `humanize-design` | Web/UI, landing pages, slide decks, HTML/CSS/React | Language-agnostic | [taxonomy](skills/humanize-design/references/design-slop-taxonomy.md) |
+| `humanize-image` | Generated illustrations & photos — audit + fix brief | Language-agnostic | [taxonomy](skills/humanize-image/references/image-tell-taxonomy.md) |
 
 Each skill follows the same loop: **detect → repair → verify (fidelity + naturalness) → grade.**
 
