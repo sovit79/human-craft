@@ -7,7 +7,7 @@ while eliminating the machine fingerprint. Three skills, one loop: detect → re
 
 ## Intent routing
 
-Detect user intent and **read the relevant skill file before doing anything else.**
+Detect user intent and **read the relevant skill file before doing anything else** using your file-read tool to fetch it on demand.
 
 | Trigger phrases | Skill file to read |
 |---|---|

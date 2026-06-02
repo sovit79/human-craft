@@ -3,9 +3,9 @@
 Human Craft removes "AI tells" from writing, UI design, and images, preserving meaning and intent
 while eliminating the machine fingerprint. Three skills, one loop: detect → repair → verify → grade.
 
-> **OpenAI Codex:** this file is loaded automatically before any task. A global override can live at
-> `~/.codex/AGENTS.md`; repo-level (this file) applies to all contributors; subdirectory files
-> override for specific parts of the codebase.
+> **OpenAI Codex:** this file is loaded automatically before any task. Codex layers AGENTS.md files:
+> global (`~/.codex/AGENTS.md`) → repo-level (this file) → subdirectory overrides. Subdirectory
+> wins over repo-level when both exist; repo-level wins over global.
 
 ## Intent routing
 

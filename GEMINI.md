@@ -3,9 +3,9 @@
 Human Craft removes "AI tells" from writing, UI design, and images, preserving meaning and intent
 while eliminating the machine fingerprint. Three skills, one loop: detect → repair → verify → grade.
 
-> **Gemini CLI:** this file is loaded as context for every prompt. Note: Gemini supports `@file.md`
-> import syntax to embed file contents eagerly. This repo intentionally does NOT use that here —
-> skill files are read on demand via your file-read tool so only the relevant skill loads per task.
+> **Gemini CLI:** this file is loaded as context for every prompt. Gemini supports `@file.md` import
+> syntax for eager file embedding — this repo skips that and uses on-demand file reads instead,
+> so only the relevant skill loads per task. Use your file-read tool when routing below.
 
 ## Intent routing
 
