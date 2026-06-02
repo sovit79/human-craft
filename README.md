@@ -1,4 +1,4 @@
-# Human Craft — the AI-tell removal kit
+# Human Craft — HUMANIZE YOUR AI
 
 > Make AI-assisted **writing, UI design, and images** read as deliberate human craft —
 > not as the statistical "default" a chat model spits out.
