@@ -1,0 +1,6 @@
+# Skill run outputs — never commit
+_workspace/
+
+# OS
+.DS_Store
+Thumbs.db
